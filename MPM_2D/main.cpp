@@ -23,6 +23,7 @@
 static constexpr size_t kMaxFramesInFlight = 3;
 static constexpr int screenWidth = 800;
 static constexpr int screenHeight = 800;
+static constexpr bool record = false;
 static MTL::ClearColor backgroundColor = MTL::ClearColor::Make( 0.067, 0.176, 0.247, 1.0 );
 static NS::String* title =
     NS::String::string( "simple_mpm", NS::StringEncoding::UTF8StringEncoding );
@@ -306,7 +307,8 @@ void Renderer::buildShaders()
     )";
 
     NS::Error* pError = nullptr;
-    MTL::Library* pLibrary = _pDevice->newLibrary( NS::String::string(shaderSrc, UTF8StringEncoding), nullptr, &pError );
+    MTL::Library* pLibrary = _pDevice->newDefaultLibrary();
+    
     if ( !pLibrary )
     {
         __builtin_printf( "%s", pError->localizedDescription()->utf8String() );
@@ -409,7 +411,7 @@ void Renderer::draw( MTK::View* pView )
     
     mpmSolver.nextFrame();
 
-    const float scl = 0.0125f;
+    const float scl = 0.01f;
     shader_types::InstanceData* pInstanceData = reinterpret_cast< shader_types::InstanceData *>( pInstanceDataBuffer->contents() );
     for ( int i = 0; i < mpmSolver.numParticles; i++ )
     {
@@ -443,7 +445,7 @@ void Renderer::draw( MTK::View* pView )
     pCmd->commit();
     pPool->release();
     
-    recorder.addFrame(pView->currentDrawable()->texture(), mpmSolver.frame_time);
+    if (record) recorder.addFrame(pView->currentDrawable()->texture(), mpmSolver.frame_time);
     
 }
 
