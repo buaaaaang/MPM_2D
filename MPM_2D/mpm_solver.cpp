@@ -7,10 +7,21 @@
 
 #include "mpm_solver.hpp"
 
-void Solver::add_object(Vec center, int num, float4 color) {
+void Solver::add_square(Vec center, int num, float4 color, float size) {
     for (int i=0; i<num; i++) {
         particles.push_back(Particle(
-            (Vec::randomVector()*2.0-Vec(1))*0.08 + center));
+            (Vec::randomVector()-0.5)*size + center));
+    }
+    colors.push_back(ParticleColor(color, numParticles, numParticles+num));
+    numParticles += num;
+}
+
+void Solver::add_circle(Vec center, int num, float4 color, float size) {
+    Vec v;
+    for (int i=0; i<num; i++) {
+        Vec v = Vec::randomVector()-0.5;
+        while (v.x*v.x+v.y*v.y>1./4.) v = Vec::randomVector()-0.5;
+        particles.push_back(Particle(v*size+center));
     }
     colors.push_back(ParticleColor(color, numParticles, numParticles+num));
     numParticles += num;
@@ -24,7 +35,7 @@ float4 Solver::getParticleColor(int i) {
 
 void Solver::advance() {
     std::memset(grid, 0, sizeof(grid));
-    
+    int cnt = 0;
     for (auto &p : particles) {
         VectorND<2, int> base_coord = (p.x * inv_dx - Vec(0.5f)).cast<int>();
         Vec fx = p.x * inv_dx - base_coord.cast<float>();
@@ -51,6 +62,7 @@ void Solver::advance() {
                     (w[i].x*w[j].y * (mass_x_velocity + VectorND<3, float>(affine * dpos, 0)));
             }
         }
+        cnt++;
     }
     
     for(int i = 0; i <= n; i++) {
@@ -60,7 +72,7 @@ void Solver::advance() {
                 g /= g[2];
                 g += dt * VectorND<3, float>(0, -200, 0);
                 float boundary = 0.05;
-                float x = (float) i / n;
+                float x = float(i) / n;
                 float y = float(j) / n;
                 if (x < boundary || x > 1-boundary || y > 1-boundary) { g = VectorND<3, float>(0); }
                 if (y < boundary) { g[1] = std::max(0.0f, g[1]); }
