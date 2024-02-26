@@ -45,8 +45,8 @@ class Solver {
 public:
     void advance();
     void nextFrame();
-    void add_square(Vec center, int numParticles, float4 color, float size = 0.16);
-    void add_circle(Vec center, int numParticles, float4 color, float size = 0.16);
+    void add_square(Vec center, int numParticles, float4 color, float size = 0.20);
+    void add_circle(Vec center, int numParticles, float4 color, float size = 0.20);
     float getParticleX(int i) { return particles[i].x.x; };
     float getParticleY(int i) { return particles[i].x.y; };
     float4 getParticleColor(int i);
@@ -56,8 +56,8 @@ public:
     float frame_time;
     Solver() : numParticles(0), colorFinder(0), time(0.0), frame_time(0.0) {
         add_square(Vec(0.55,0.3), 800, { 0.906, 0.337, 0.239, 1.0 });
-        add_circle(Vec(0.55,0.7), 800, { 0.91, 0.694, 0.204, 1.0 });
-        add_circle(Vec(0.45,0.5), 800, { 0.031, 0.486, 0.502, 1.0 });
+        add_square(Vec(0.60,0.8), 800, { 0.91, 0.694, 0.204, 1.0 });
+        add_circle(Vec(0.40,0.55), 800, { 0.031, 0.486, 0.502, 1.0 });
     }
 private:
     static const int n = 80; // grid resolution

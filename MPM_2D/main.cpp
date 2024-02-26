@@ -23,10 +23,10 @@
 static constexpr size_t kMaxFramesInFlight = 3;
 static constexpr int screenWidth = 800;
 static constexpr int screenHeight = 800;
-static constexpr bool record = false;
+static constexpr bool record = true;
 static MTL::ClearColor backgroundColor = MTL::ClearColor::Make( 0.067, 0.176, 0.247, 1.0 );
 static NS::String* title =
-    NS::String::string( "simple_mpm", NS::StringEncoding::UTF8StringEncoding );
+    NS::String::string( "MPM_2D", NS::StringEncoding::UTF8StringEncoding );
 
 #pragma region Declarations {
 

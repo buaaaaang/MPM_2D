@@ -71,7 +71,7 @@ void Solver::advance() {
             if (g[2] > 0) {
                 g /= g[2];
                 g += dt * VectorND<3, float>(0, -200, 0);
-                float boundary = 0.05;
+                float boundary = 0.02;
                 float x = float(i) / n;
                 float y = float(j) / n;
                 if (x < boundary || x > 1-boundary || y > 1-boundary) { g = VectorND<3, float>(0); }

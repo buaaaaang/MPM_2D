@@ -12,6 +12,7 @@
 		C02687422B7DCDEB00F17237 /* mpm_solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C02687412B7DCDEB00F17237 /* mpm_solver.cpp */; };
 		C02687472B7FE21700F17237 /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C02687452B7FE21700F17237 /* utils.cpp */; };
 		C026874A2B8274DF00F17237 /* recorder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C02687482B8274DF00F17237 /* recorder.cpp */; };
+		C05DD4582B8C5C580026D66A /* shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = C05DD4572B8C5C580026D66A /* shader.metal */; };
 		C0B136522B7134E800747CBD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B136512B7134E800747CBD /* main.cpp */; };
 		C0B1365A2B7136D000747CBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B136592B7136D000747CBD /* Foundation.framework */; };
 		C0B1365C2B7136D900747CBD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0B1365B2B7136D900747CBD /* QuartzCore.framework */; };
@@ -39,6 +40,7 @@
 		C02687492B8274DF00F17237 /* recorder.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = recorder.hpp; sourceTree = "<group>"; };
 		C026874B2B82771300F17237 /* stb_image_write.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image_write.h; sourceTree = "<group>"; };
 		C058FBB22B843B6100C0956A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C05DD4572B8C5C580026D66A /* shader.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = shader.metal; sourceTree = "<group>"; };
 		C0B1364E2B7134E800747CBD /* MPM_2D */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MPM_2D; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B136512B7134E800747CBD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C0B136592B7136D000747CBD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -85,6 +87,7 @@
 		C0B136502B7134E800747CBD /* MPM_2D */ = {
 			isa = PBXGroup;
 			children = (
+				C05DD4572B8C5C580026D66A /* shader.metal */,
 				C026874B2B82771300F17237 /* stb_image_write.h */,
 				C02687412B7DCDEB00F17237 /* mpm_solver.cpp */,
 				C0B136512B7134E800747CBD /* main.cpp */,
@@ -170,6 +173,7 @@
 				C02687422B7DCDEB00F17237 /* mpm_solver.cpp in Sources */,
 				C0B136522B7134E800747CBD /* main.cpp in Sources */,
 				C026874A2B8274DF00F17237 /* recorder.cpp in Sources */,
+				C05DD4582B8C5C580026D66A /* shader.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
